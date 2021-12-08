@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,7 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor (private translateService: TranslateService){}
+  constructor (
+    private translateService: TranslateService,
+    private router: Router){}
 
   toEn(){
      this.translateService.setDefaultLang('en')
@@ -16,6 +19,18 @@ export class HeaderComponent implements OnInit {
 
   toKa(){
     this.translateService.setDefaultLang('ka')
+  }
+
+  goToAuth(){
+    this.router.navigate(['auth']);
+  }
+
+  goToContent(){
+    this.router.navigate(['content', 'list']);
+  }
+
+  goToDetails(){
+    // this.router.navigate(['details']);
   }
 
   ngOnInit() {

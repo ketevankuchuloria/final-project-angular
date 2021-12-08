@@ -6,19 +6,22 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ShellModule } from './shell/shell.module';
+import { AppRoutingModule } from './app-routing.module';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ShellModule,
+    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
