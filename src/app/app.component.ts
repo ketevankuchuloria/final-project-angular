@@ -6,14 +6,4 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor (private translateService: TranslateService){}
-
-  toEn(){
-     this.translateService.setDefaultLang('en')
-  }
-
-  toKa(){
-    this.translateService.setDefaultLang('ka')
-  }
-}
+export class AppComponent {}
