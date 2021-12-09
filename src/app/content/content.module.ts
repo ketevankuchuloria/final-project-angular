@@ -6,10 +6,11 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
-    ContentRoutingModule    
+    ContentRoutingModule,
   ],
   declarations: [ContentComponent, AddComponent, ListComponent, DetailsComponent]
 })
