@@ -4,15 +4,17 @@ import { NotFoundComponent } from './shell/notFound/notFound.component';
 
 const routes: Routes = [
   {
+    path:'',
+    loadChildren: () => 
+    import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  
+  {
     path:'content',
     loadChildren: () => 
     import('./content/content.module').then((m) => m.ContentModule),
   },
-  {
-    path:'auth',
-    loadChildren: () => 
-    import('./auth/auth.module').then((m) => m.AuthModule),
-  },
+  
   
   {path:'**', component: NotFoundComponent}
 ]; 

@@ -1,13 +1,35 @@
 <div class="header">
-  <div>Header</div>
+  <div class="museum-name">The Metropolitan Museum of Art Collection</div>
   <div>
-  <button (click) = "toEn()"> EN </button>
-  <button (click) = "toKa()"> KA </button>
+  <button class="btn btn-outline-light" (click) = "en()"> EN </button>
+  <button class="btn btn-outline-light" (click) = "ka()"> KA </button>
   <br>
-  <button > Go To Auth </button>
+  <!-- <button > Go To Auth </button> -->
   <!-- <button [routerLink] = "''">Go To Content</button>
    -->
-   <button [routerLink] = "['content']"> Go To Content </button>
+   <!-- <button [routerLink] = "['content']"> Go To Content
+    </button> -->
+   
+  </div>
+
+  <div class="auth-div">
+    
+       <button  (click) = "goToSignIn()"> 
+        {{ "auth.SIGN_IN" | translate }}
+        </button>
+       <button  (click) = "goToSignUp()"> 
+        {{ "auth.SIGN_UP" | translate }}
+        </button>
+    
+        <!-- <button *ngIf="isLoggedIn" type="button" (click)="signOut()">
+        {{ "auth.SIGN_OUT" | translate }}
+        </button> -->
    
   </div>
 </div>
+
+
+
+
+
+

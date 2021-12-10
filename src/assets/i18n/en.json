@@ -1,0 +1,9 @@
+{"auth": {
+    "SIGN_IN": "Sign In",
+    "SIGN_UP": "Sign Up",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REPEAT_PASSWORD": "Repeat Password",
+    "SIGN_OUT": "Sign Out"
+  }
+}

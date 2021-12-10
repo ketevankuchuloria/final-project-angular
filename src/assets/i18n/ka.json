@@ -1,3 +1,9 @@
-{
-    "HOME": "მთავარი"
+{"auth": {
+    "SIGN_IN": "შესვლა",
+    "SIGN_UP": "რეგისტრაცია",
+    "EMAIL": "მეილი",
+    "PASSWORD": "Password",
+    "REPEAT_PASSWORD": "Repeat Password",
+    "SIGN_OUT": "Sign Out"
+  }
 }
