@@ -1,6 +1,8 @@
 <div class="header">
   <div class="museum-name">The Metropolitan Museum of Art Collection</div>
-  <div>
+  
+  <div class="buttons-div">
+  <div class="language-button">
   <button class="btn btn-outline-light" (click) = "en()"> EN </button>
   <button class="btn btn-outline-light" (click) = "ka()"> KA </button>
   <br>
@@ -14,10 +16,10 @@
 
   <div class="auth-div">
     
-       <button  (click) = "goToSignIn()"> 
+       <button class="btn btn-light btn btn-primary btn-lg" (click) = "goToSignIn()"> 
         {{ "auth.SIGN_IN" | translate }}
         </button>
-       <button  (click) = "goToSignUp()"> 
+       <button class="btn btn-light btn btn-primary btn-lg" (click) = "goToSignUp()"> 
         {{ "auth.SIGN_UP" | translate }}
         </button>
     
@@ -25,6 +27,7 @@
         {{ "auth.SIGN_OUT" | translate }}
         </button> -->
    
+  </div>
   </div>
 </div>
 
