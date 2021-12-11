@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "museum-project-7ae95": {
+      "hosting": {
+        "angularproject": [
+          "museum-project-7ae95"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "museum-project-7ae95"
+  }
+}
