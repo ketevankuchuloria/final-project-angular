@@ -15,17 +15,18 @@
   </div>
 
   <div class="auth-div">
-    
+        
+       <ng-container *ngIf = "!isLoggedIn">
        <button class="btn btn-light btn btn-primary btn-lg" (click) = "goToSignIn()"> 
         {{ "auth.SIGN_IN" | translate }}
         </button>
        <button class="btn btn-light btn btn-primary btn-lg" (click) = "goToSignUp()"> 
         {{ "auth.SIGN_UP" | translate }}
         </button>
-    
-        <!-- <button *ngIf="isLoggedIn" type="button" (click)="signOut()">
+      </ng-container>
+        <button *ngIf = "isLoggedIn" type="button" (click)="signOut()">
         {{ "auth.SIGN_OUT" | translate }}
-        </button> -->
+        </button>
    
   </div>
   </div>

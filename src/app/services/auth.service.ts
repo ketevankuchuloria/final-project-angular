@@ -1,55 +1,59 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SignInForm, SignUpForm } from '../auth';
 
 interface User {
-  uid: string | null | undefined;
-  email: string | null | undefined;
+  uid?: string | null | undefined;
+  email?: string | null | undefined;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private _user: User | undefined;
+  private _user: User | null = null;
 
-  get isLoggedIn(): boolean {
+  get isLoggedIn(): boolean{
     return !!this._user;
   }
 
-//   get userId(): string|undefined {
-//     return this._user?.uid;
-//   }
+  // get userId(): string {
+  //   return this._user.uid
+  // }
+  // private _initiated = false;
+  // get initiated(): boolean {
+  //   return this._initiated;
+  // }
 
-//   private_initiated = false;
-//   get initiated(): boolean {
-//       return this._initiated;
-//   }
+  constructor(private auth: AngularFireAuth){
+    // this.auth.onAuthStateChanged((user) =>{
+    //   this._user = user;
 
-  constructor(private auth: AngularFireAuth) {
-    // this.auth.onAuthStateChanged((user) => {
-    //   if (user) {
-    //     this._user = {
-    //       email: user?.email,
-    //       uid: user?.uid,
-    //     };
-
-    //     return;
+    //   if(!this._initiated){
+    //     this._initiated = true;
     //   }
-
-    //   this._user = null;
     // });
-  }
+    this.auth.onAuthStateChanged((user) => {
+      if(user) {
+        this._user = {
+          email: user?.email,
+          uid: user?.uid,
+        };
+        return;
+      }
+      this._user = null;
+      console.log((this._user))
 
-  signIn({ email, password }: SignInForm) {
+    })
+  }
+  signIn({email, password}:SignInForm){
     return this.auth.signInWithEmailAndPassword(email, password);
   }
-
-  signUp({ email, password }: SignUpForm) {
+  signUp({email, password}: SignUpForm){
     return this.auth.createUserWithEmailAndPassword(email, password);
   }
-
-  signOut() {
+  signOut(){
     return this.auth.signOut();
   }
+
 }

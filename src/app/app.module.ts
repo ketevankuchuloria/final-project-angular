@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
+import { ContentModule } from './content/content.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent
    ],
   imports: [
+    ContentModule,
     SharedModule,
     CommonModule,
     BrowserModule,

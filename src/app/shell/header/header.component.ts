@@ -1,36 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth.service';
+// import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   get isEn(): boolean {
     return this.isLanguage('en');
   }
+
   get isKa(): boolean {
-    return this.isLanguage('en');
+    return this.isLanguage('ka');
   }
-  // get isLoggedIn(): boolean {
-  //   return this.auth.isLoggedIn;
+
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
+  }
+
+  // get isInitiated(): boolean {
+  //   // return this.auth.initiated;
+  //   return false;
   // }
-  constructor (
+
+  constructor(
     private translateService: TranslateService,
     private router: Router,
- 
-    
-   
-    ){}
+    private auth: AuthService
+  ) {}
 
-    en(){
-     this.translateService.setDefaultLang('en')
+  en() {
+    this.translateService.use('en');
   }
 
-    ka(){
-    this.translateService.setDefaultLang('ka')
+  ka() {
+    this.translateService.use('ka');
+  }
+
+  private isLanguage(lang: string): boolean {
+    const defaultLang = this.translateService.defaultLang;
+    const currentLang = this.translateService.currentLang;
+
+    return currentLang ? currentLang === lang : defaultLang === lang;
   }
 
   goToSignIn() {
@@ -41,27 +56,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['sign-up']);
   }
 
-  // goToAuth(){
-  //   this.router.navigate(['auth']);
-  // }
-
-  // goToContent(){
-  //   this.router.navigate(['content', 'list']);
-  // }
-  
-  // signOut() {
-  //   this.auth.signOut().then(() => {
-  //     this.router.navigate(['sign-in']);
-  //   });
-  
-
-  private isLanguage(lang: string): boolean {
-    const defaultLang = this.translateService.defaultLang;
-    const currentLang = this.translateService.currentLang;
-    return currentLang ? currentLang === lang : defaultLang === lang;
+  signOut() {
+    this.auth.signOut().then(() => {
+      this.router.navigate(['sign-in']);
+    });
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit(): void {}
 }
