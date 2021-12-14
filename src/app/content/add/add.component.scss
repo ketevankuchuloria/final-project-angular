@@ -1,0 +1,24 @@
+.middle {
+    background-image: url("/assets/images/contentimage.jpg");
+    background-size: cover;
+  }
+  
+  main {
+    height: calc(100% - 60px);
+  }
+  
+  .search-form {
+    max-width: 400px;
+  }
+  
+  .alert {
+    margin-bottom: 0px !important;
+  }
+  
+  .badge {
+    cursor: pointer;
+  }
+  
+  .poster {
+    width: 300px;
+  }

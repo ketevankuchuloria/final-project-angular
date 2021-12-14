@@ -1,4 +1,6 @@
 export const environment = {
+  artApi: 'https://collectionapi.metmuseum.org/public/collection/v1/search?q=',
+  base_url: 'https://collectionapi.metmuseum.org/public/collection/v1/',
   firebase: {
     projectId: 'museum-project-7ae95',
     appId: '1:177149491593:web:e321d7c1925d92b4954958',

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
+import { AddComponent } from './add/add.component';
 import { ContentComponent } from './content.component';
 
 
@@ -11,10 +12,10 @@ const routes: Routes = [
         path: '',
         component:ContentComponent ,
     },
-    // {
-    //     path: 'add',
-    //     component: AddComponent,
-    // },
+    {
+        path: 'add',
+        component: AddComponent,
+    },
     // {
     //     path: 'details/:id',
     //     component: DetailsComponent,

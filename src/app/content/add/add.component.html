@@ -1,3 +1,147 @@
-<p>
-  add works!
-</p>
+<main>
+  <section class="py-3 text-center middle">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light text-white">
+        {{ "catalogue.ADD_ART" | translate }}
+      </h1>
+    </div>
+  </section>
+
+
+
+
+
+  <div class="py-5">
+    <div class="container d-flex justify-content-center flex-column w-100">
+      <div class="row d-flex justify-content-center">
+        <div class="search-form d-flex justify-content-center flex-column">
+          
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]= "searchKey"
+
+            placeholder="{{ 'catalogue.ENTER_ART_NAME' | translate }}"
+          />
+          <button class="btn btn-outline-secondary mt-2" (click) = "search()" >
+            {{ "catalogue.SEARCH" | translate }}
+          </button>
+          <div
+            class="alert alert-danger mt-2"
+            role="alert"
+            *ngIf="searchHasError"
+          >
+            {{ "errors.ENTER_ART_NAME" | translate }}
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row d-flex justify-content-center mt-2 flex-row mb-3">
+        <div class="d-flex justify-content-center">
+          <span
+            class="badge rounded-pill bg-success ms-1"
+            *ngFor="let name of lastThreeSearches"
+            >{{ name }}</span
+          >
+        </div>
+      </div>
+
+
+
+      <!-- <div *ngIf="selectedMovie$ | async as selectedMovie">
+        <h2>{{ selectedMovie.title }}</h2>
+        <div *ngFor="let c of selectedMovie.countries">
+          <div><img [src]="c.flagUrl" [title]="getTitle(c)" /></div>
+        </div>
+        <div><img [src]="selectedMovie.posterUrl" /></div> 
+
+
+
+        <div class="row mt-3" *ngIf="selectedMovie">
+          <form [formGroup]="form" (submit)="submit(selectedMovie)">
+            <div class="row mb-3">
+              <label for="review" class="col-sm-2 col-form-label">Review</label>
+              <div class="col-sm-10">
+                <textarea
+                  formControlName="review"
+                  class="form-control"
+                  id="review"
+                ></textarea>
+                <span appCharacter [length]="form.controls.review?.value.length"
+                  >Characters: {{ form.controls.review?.value.length }}</span
+                >
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="rating" class="col-sm-2 col-form-label">Rating</label>
+              <div class="col-sm-10">
+                <span class="ms-2" *ngFor="let rating of ratings">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    [value]="rating"
+                    formControlName="rating"
+                  />
+                </span>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="status" class="col-sm-2 col-form-label">Status</label>
+              <div class="col-sm-10">
+                <select class="form-select" formControlName="status">
+                  <option [value]="status.Watched">
+                    {{ "catalogue.WATCHED" | translate }}
+                  </option>
+                  <option [value]="status.WatchLater">
+                    {{ "catalogue.WATCH_LATER" | translate }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3" *ngIf="canWatchLater">
+              <label for="status" class="col-sm-2 col-form-label"
+                >When To Watch</label
+              >
+              <div class="col-sm-10">
+                <select class="form-select" formControlName="whenToWatch">
+                  <option [value]="null" hidden>
+                    {{ "catalogue.SELECT" | translate }}
+                  </option>
+                  <option *ngFor="let w of whenToWatch" [value]="w.value">
+                    {{ w.label | translate }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+            <ng-container *ngIf="submitted && form.invalid">
+              <div
+                class="alert alert-danger mt-2"
+                role="alert"
+                *ngIf="form.controls.review?.errors?.required"
+              >
+                რევიუ სავალდებულოა
+              </div>
+              <div
+                class="alert alert-danger mt-2"
+                role="alert"
+                *ngIf="form.controls.review?.errors?.minlength"
+              >
+                განხილვა უნდა იყოს მინიმუმ 10 სიმბოლო
+              </div>
+              <div
+                class="alert alert-danger mt-2"
+                role="alert"
+                *ngIf="form.controls.whenToWatch?.errors?.required"
+              >
+                გთხოვთ მონიშნოთ როდის გინდათ ყურება
+              </div>
+            </ng-container>
+          </form>
+        </div>
+      </div> -->
+    </div>
+  </div> 
+</main>
