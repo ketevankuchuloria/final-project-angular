@@ -49,7 +49,9 @@
       </div>
 
 
-
+<div *ngIf = "selectedArt">
+  {{selectedArt.title}}
+</div>
       <!-- <div *ngIf="selectedMovie$ | async as selectedMovie">
         <h2>{{ selectedMovie.title }}</h2>
         <div *ngFor="let c of selectedMovie.countries">

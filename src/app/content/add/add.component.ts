@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Art } from '../models';
 import { AddFacade } from './add.facade';
 
 @Component({
@@ -15,6 +16,8 @@ export class AddComponent implements OnInit {
 
   searchHasError = false;
 
+  selectedArt: Art | null = null;
+
   constructor(private facade: AddFacade) { }
 
   search(){
@@ -24,8 +27,11 @@ export class AddComponent implements OnInit {
    }
 
    this.searchHasError = false;
+
    
-   this.facade.fetchArt(this.searchKey)
+   this.facade
+   .fetchArt(this.searchKey)
+   .subscribe((art) => (this.selectedArt = art));
   }
 
   ngOnInit() {

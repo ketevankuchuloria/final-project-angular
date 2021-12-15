@@ -10,7 +10,7 @@ import { ArtResult } from "../models";
    constructor(private http: HttpClient){}
 
    getArt(title:string){
-    return this.http.get(`${environment.artApi}=${title}`);
+    return this.http.get<ArtResult>(`${environment.artApi}=${title}`);
    }
 
  
