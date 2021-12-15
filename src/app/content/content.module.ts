@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AddComponent } from './add/add.component';
 import { FormsModule } from '@angular/forms';
 import { ArtApiService } from './services/art-api.service';
+import { AddFacade } from './add/add.facade';
 
 // import { AddComponent } from './add/add.component';
 // import { ListComponent } from './list/list.component';
@@ -22,6 +23,6 @@ import { ArtApiService } from './services/art-api.service';
     FormsModule
   ],
   declarations: [ContentComponent, AddComponent],
-  providers: [ArtApiService]
+  providers: [ArtApiService, AddFacade]
 })
 export class ContentModule { }

@@ -48,10 +48,16 @@
         </div>
       </div>
 
+      <div *ngIf="selectedArt$ | async as selectedArt">
+        <img [src] = "selectedArt.imageUrl"/>
+        <h3>{{selectedArt.title}}</h3>
+      </div>
+     
 
-<div *ngIf = "selectedArt">
+
+<!-- <div *ngIf = "selectedArt">
   {{selectedArt.title}}
-</div>
+</div> -->
       <!-- <div *ngIf="selectedMovie$ | async as selectedMovie">
         <h2>{{ selectedMovie.title }}</h2>
         <div *ngFor="let c of selectedMovie.countries">
