@@ -18,6 +18,7 @@ export class AuthService {
   }
 
   get userId() {
+    console.log("from getter", this._user);
     return this._user?.uid;
   }
 
@@ -39,10 +40,14 @@ export class AuthService {
     // });
     this.auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user.uid);
         this._user = {
           email: user?.email,
           uid: user?.uid,
         };
+
+        console.log("from callback", this._user);
+
         return;
       }
       this._user = null;
