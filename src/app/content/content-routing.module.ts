@@ -12,15 +12,17 @@ const routes: Routes = [
     path: "",
     component: ContentComponent,
   },
-  {
-    path: "add",
-    component: AddComponent,
-  },
 
   {
     path: "list",
     component: ListComponent,
   },
+
+  {
+    path: "add",
+    component: AddComponent,
+  },
+
   // {
   //     path: 'details/:id',
   //     component: DetailsComponent,

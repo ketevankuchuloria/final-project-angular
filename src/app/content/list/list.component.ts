@@ -32,13 +32,11 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
     this.loadingService.start();
     this.arts$ = this.fireApiService.getArts().pipe(
       switchMap((data) => forkJoin(this.mapArtData(data))),
       finalize(() => this.loadingService.stop())
     );
-    */
 
     setTimeout(
       () => this.fireApiService.getArts().subscribe((x) => console.log(x)),
