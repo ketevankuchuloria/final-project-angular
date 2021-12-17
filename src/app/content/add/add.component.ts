@@ -94,8 +94,6 @@ export class AddComponent implements OnInit {
       review: value.review,
     };
 
-    console.log(body);
-
     this.facade.submit(body);
   }
 

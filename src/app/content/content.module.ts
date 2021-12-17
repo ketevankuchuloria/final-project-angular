@@ -11,6 +11,7 @@ import { AddFacade } from "./add/add.facade";
 import { CharacterDirective } from "./add/character.directive";
 import { ListComponent } from "./list/list.component";
 import { ListItemComponent } from "./list/list-item/list-item.component";
+// import { DetailsComponent } from "./details/details.component";
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ListItemComponent } from "./list/list-item/list-item.component";
     CharacterDirective,
     ListComponent,
     ListItemComponent,
+    // DetailsComponent,
   ],
   providers: [ArtApiService, AddFacade],
 })

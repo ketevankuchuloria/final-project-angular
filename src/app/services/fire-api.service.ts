@@ -14,7 +14,7 @@ export class FireApiService {
   addArt(body: ArtBody) {
     return from(this.store.collection("content").add(body));
   }
-  // au windows ze var da shen daasave
+
   getArts(): Observable<ArtWithId[]> {
     return this.store
       .collection<ArtBody>("content", (ref) =>

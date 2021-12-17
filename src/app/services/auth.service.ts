@@ -3,8 +3,8 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { SignInForm, SignUpForm } from "../auth";
 
 interface User {
-  uid?: string | null | undefined;
-  email?: string | null | undefined;
+  uid: string | null | undefined;
+  email: string | null | undefined;
 }
 
 @Injectable({
@@ -18,17 +18,13 @@ export class AuthService {
   }
 
   get userId() {
-    console.log("from getter", this._user);
     return this._user?.uid;
   }
 
-  // get userId(): string {
-  //   return this._user.uid
-  // }
-  // private _initiated = false;
-  // get initiated(): boolean {
-  //   return this._initiated;
-  // }
+  private _initiated = false;
+  get initiated(): boolean {
+    return this._initiated;
+  }
 
   constructor(private auth: AngularFireAuth) {
     // this.auth.onAuthStateChanged((user) =>{
@@ -40,13 +36,10 @@ export class AuthService {
     // });
     this.auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.uid);
         this._user = {
           email: user?.email,
           uid: user?.uid,
         };
-
-        console.log("from callback", this._user);
 
         return;
       }

@@ -38,9 +38,9 @@ export class ListComponent implements OnInit {
       finalize(() => this.loadingService.stop())
     );
 
-    setTimeout(
-      () => this.fireApiService.getArts().subscribe((x) => console.log(x)),
-      3000
-    );
+    // setTimeout(
+    //   () => this.fireApiService.getArts().subscribe((x) => console.log(x)),
+    //   3000
+    // );
   }
 }
