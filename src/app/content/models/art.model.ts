@@ -16,3 +16,17 @@ export interface Art {
   artistBio: string;
   artist: string;
 }
+
+export interface ArtBody {
+  objectIds: number;
+  uid: string | null | undefined;
+  rating: number;
+  review: string;
+}
+
+export type ArtWithId = ArtBody & { id: string };
+
+export interface ListItem {
+  data: ArtWithId;
+  art: ArtResult;
+}

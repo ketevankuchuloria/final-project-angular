@@ -9,10 +9,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ArtApiService } from "./services/art-api.service";
 import { AddFacade } from "./add/add.facade";
 import { CharacterDirective } from "./add/character.directive";
-
-// import { AddComponent } from './add/add.component';
-// import { ListComponent } from './list/list.component';
-// import { DetailsComponent } from './details/details.component';
+import { ListComponent } from "./list/list.component";
+import { ListItemComponent } from "./list/list-item/list-item.component";
 
 @NgModule({
   imports: [
@@ -23,7 +21,13 @@ import { CharacterDirective } from "./add/character.directive";
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [ContentComponent, AddComponent, CharacterDirective],
+  declarations: [
+    ContentComponent,
+    AddComponent,
+    CharacterDirective,
+    ListComponent,
+    ListItemComponent,
+  ],
   providers: [ArtApiService, AddFacade],
 })
 export class ContentModule {}

@@ -2,9 +2,11 @@ import { Injectable } from "@angular/core";
 import { finalize, map, switchMap } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { LoadingService } from "src/app/services";
-import { Art, ArtResult } from "../models";
+import { Art, ArtBody, ArtResult } from "../models";
 import { ArtApiService } from "../services";
 import { addArtStorage } from "./addArt.storage.service";
+import { FireApiService } from "src/app/services/fire-api.service";
+import { EventBusService } from "src/app/services/event.buss.service";
 
 @Injectable()
 export class AddFacade {
@@ -14,7 +16,9 @@ export class AddFacade {
   constructor(
     private ArtApiService: ArtApiService,
     private loadingService: LoadingService,
-    private storage: addArtStorage
+    private storage: addArtStorage,
+    private fireApiService: FireApiService,
+    private eventBus: EventBusService
   ) {}
 
   fetchArt(title: string): Observable<Art> | null {
@@ -31,7 +35,8 @@ export class AddFacade {
           artist: art.artistAlphaSort,
         })),
         finalize(() => {
-          this.loadingService.stop(); // vax ver davasave :D aba daasave
+          this.loadingService.stop();
+          this.eventBus.emit("FORM_RESET_EVENT_KEY");
         })
       );
   }
@@ -40,5 +45,8 @@ export class AddFacade {
   }
   restoreState() {
     this.storage.restoreState();
+  }
+  submit(body: ArtBody) {
+    this.fireApiService.addArt(body).subscribe((x) => console.log(x));
   }
 }

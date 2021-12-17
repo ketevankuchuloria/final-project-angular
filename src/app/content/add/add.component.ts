@@ -5,11 +5,12 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { Observable } from "rxjs";
-import { debounceTime } from "rxjs/operators";
+import { Observable, Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 import { AuthService } from "src/app/services";
-import { RATINGS } from "../content.model";
-import { Art } from "../models";
+import { EventBusService } from "src/app/services/event.buss.service";
+import { FORM_RESET_EVENT_KEY, RATINGS } from "../content.model";
+import { Art, ArtBody } from "../models";
 import { AddFacade } from "./add.facade";
 import { addArtStorage } from "./addArt.storage.service";
 
@@ -20,6 +21,8 @@ import { addArtStorage } from "./addArt.storage.service";
   providers: [AddFacade, addArtStorage],
 })
 export class AddComponent implements OnInit {
+  private unsubscribe$ = new Subject();
+
   form: FormGroup = new FormGroup({});
 
   searchKey: string = "";
@@ -41,7 +44,8 @@ export class AddComponent implements OnInit {
   constructor(
     private facade: AddFacade,
     private auth: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private eventBus: EventBusService
   ) {}
 
   search() {
@@ -73,21 +77,44 @@ export class AddComponent implements OnInit {
     });
   }
 
-  submit() {
-    console.log("form is valid", this.form.valid);
-
-    console.log("form value", this.form.value);
-
-    this.form.valueChanges
-      .pipe(debounceTime(500))
-      .subscribe((x) => console.log(x));
-
-    console.log("submitting");
-
+  submit(selectedArt: Art) {
     this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    const value = this.form.value;
+
+    console.log(selectedArt);
+    const body: ArtBody = {
+      objectIds: selectedArt.objectID,
+      uid: this.auth.userId,
+      rating: value.rating,
+      review: value.review,
+    };
+
+    console.log(body);
+
+    this.facade.submit(body);
+  }
+
+  private formReset() {
+    this.form.reset();
+    this.form.updateValueAndValidity();
+
+    this.submitted = false;
+
+    this.form.get("review")?.setValue("");
+    this.form.get("rating")?.setValue(1);
   }
 
   ngOnInit() {
     this.buildForm();
+    this.facade.restoreState();
+    this.eventBus
+      .on(FORM_RESET_EVENT_KEY)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => this.formReset());
   }
 }
